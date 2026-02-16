@@ -16,30 +16,17 @@ Exercici 5
 Ara el programa ha de serialitzar un Objecte Java a un fitxer .ser i després l’ha de desserialitzar.
  */
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 
-import static java.util.Collections.sort;
+import static first_level.Listator.getPathContentSorted;
+
 
 public class FirstLevel {
 
-    public static void main (String[] args){
-        try{
-            File directory = new File("/Users/ines/IdeaProjects/TascaS1.03/src/main/java/first_level/exercise3");
-            String[] dirContent;
-            dirContent = directory.list();
-            if (dirContent != null){
-                System.out.println(dirContent.length);
-            ArrayList<String> elementsArray = new ArrayList<>(Arrays.asList(dirContent));
-            //TODO SORT
-            for(String element : dirContent){
-                System.out.println(element);
-            }
-            }
+    public static void main (String[] args) throws IOException {
 
-        }catch (Exception e){e.printStackTrace();}
+       System.out.println(Listator.getDirContentSorted("/Users/ines/IdeaProjects/TascaS1.02/src/main/java/first_level/exercise1"));
+
+        getPathContentSorted("/Users/ines/IdeaProjects/TascaS1.03/src/main/java/first_level", 0);
     }
 }
