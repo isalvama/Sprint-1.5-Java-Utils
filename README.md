@@ -46,13 +46,13 @@ This set of exercises allows you to list directories recursively, save the outpu
 
 *   **Compile the package:**
     ```bash
-    javac first_level/exercise1_2_3_4/*.java
+    javac -d out src/main/java/first_level/exercise1_2_3_4/*.java
     ```
 
 *   **Run (List + Write to TXT + Read):**
     ```bash
     # Syntax: java <package.MainClass> <directory_to_read> <output_file_path.txt>
-    java first_level.exercise1_2_3.Ex1_2_3_4Main /Users/ines/Documents /Users/ines/output.txt
+     java -cp out:src/main/resources first_level.exercise1_2_3_4.Ex1_2_3_4Main "<directory to read>" "<file to save>"
     ```
 
 ---
@@ -62,13 +62,13 @@ This exercise saves a `User` object into a binary file (`.ser`) and then retriev
 
 *   **Compile the package:**
     ```bash
-    javac first_level/exercise5/*.java
+    javac -d out src/main/java/first_level/exercise5/*.java
     ```
 
 *   **Run (Serialize and Deserialize):**
     ```bash
     # Syntax: java <package.MainClass> <directory_to_store_file/>
-    java first_level.exercise5.Main /Users/ines/Documents/
+    java -cp out:src/main/resources first_level.exercise5.Main "<directory_to_store_file/>"
     ```
 
 ---
