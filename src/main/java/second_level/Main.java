@@ -1,21 +1,37 @@
 package second_level;
 
-import first_level.exercise1_2_3.Listator;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Objects;
+import first_level.exercise1_2_3_4.Listator;
+import java.io.*;
 import java.util.Properties;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        String appConfigPath = Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("app.properties")).getPath();
+    public static void main(String[] args) {
         Properties appProps = new Properties();
-        appProps.load(new FileReader(appConfigPath));
+        try (InputStream is = Main.class.getClassLoader().getResourceAsStream("config.properties")){
+            if (is == null) {
+                System.err.println("Error: 'app.properties' file could not be found.");
+                return;
+            }
 
-        String inputDirectory = appProps.getProperty("input.directory");
-        String outputFile = appProps.getProperty("output.file");
-        Listator.writePathsInTxtFile(inputDirectory, outputFile);
+            appProps.load(is);
+
+            if (appProps.isEmpty()) {
+                System.err.println("Error: config.properties file is empty.");
+                return;
+            }
+
+            if (appProps.size() == 1) {
+                System.err.println("Error: config.properties file content only has one line.");
+                return;
+            }
+
+            String inputDirectory = appProps.getProperty("input.directory");
+            String outputFile = appProps.getProperty("output.file");
+            Listator.writePathsInTxtFile(inputDirectory, outputFile);
+
+        } catch (IOException ioe){
+            System.err.println("Error:" + ioe.getMessage());
+        }
 
     }
 }
