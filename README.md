@@ -1,4 +1,4 @@
-# Tasca S1 05
+# Sprint 1.5: Java Utils
 
 ## Description
 
